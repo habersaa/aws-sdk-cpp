@@ -280,6 +280,7 @@ Aws::String CreateTempFilePath()
 #ifdef _MSC_VER
 #pragma warning(disable: 4996) // _CRT_SECURE_NO_WARNINGS
 #endif
+	const int L_tmpnam_s = 32;
     char s_tempName[L_tmpnam_s+1];
 
     /*

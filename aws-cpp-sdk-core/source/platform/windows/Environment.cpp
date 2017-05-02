@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <utility>
+#include <cstdlib>
 
 namespace Aws
 {
@@ -29,14 +30,12 @@ that would need to be manually freed in all the client functions, just copy it i
 */
 Aws::String GetEnv(const char *variableName)
 {
-    char* variableValue = nullptr;
-    std::size_t valueSize = 0;
-    auto queryResult = _dupenv_s(&variableValue, &valueSize, variableName);
+    char* variableValue = std::getenv(variableName);
 
     Aws::String result;
-    if(queryResult == 0 && variableValue != nullptr && valueSize > 0)
+    if(variableValue != nullptr)
     {
-        result.assign(variableValue, valueSize - 1);  // don't copy the c-string terminator byte
+        result = Aws::String(variableValue);  // don't copy the c-string terminator byte
         free(variableValue);
     }
 

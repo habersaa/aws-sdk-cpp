@@ -68,7 +68,7 @@ if(MSVC)
     endif()
 elseif(USE_GCC_FLAGS)
     # max warning level, warnings are errors, turn off unused private field. We have one for an empty class.    
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic -Wextra")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic -Wextra")
 
     if(COMPILER_CLANG)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-private-field")
